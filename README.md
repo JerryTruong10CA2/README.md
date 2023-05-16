@@ -5,7 +5,7 @@ Trương Khang|10CA2|uhbobo75@gmail.com
 
 # Thông tin project
 ## Đề tài: Nhận diện khuôn mặt
-## Các thư viện sử dụng: `OpenCV, Pillow, Scikit-learn, TensorFlow, Numpy, face_recognition`
+## Các thư viện sử dụng: `OpenCV, Pillow, Numpy, face_recognition, os`
 
 ## Các chức năng chính & kế hoạch thực hiện
 
