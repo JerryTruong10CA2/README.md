@@ -5,7 +5,7 @@ import numpy as np
 from datetime import datetime
 
 # TẠO ĐƯỜNG DẪN ĐẾN DATASET CỦA ẢNH
-path = "pics2"
+path = "pics2" # ĐƯỜNG DẪN ĐẾN THƯ MỤC CHỨA DATA ẢNH
 images = []
 Names = []
 myList = os.listdir(path)
