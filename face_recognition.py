@@ -5,7 +5,7 @@ import numpy as np
 from datetime import datetime
 
 # TẠO ĐƯỜNG DẪN ĐẾN DATASET CỦA ẢNH
-path = "pics2" # ĐƯỜNG DẪN ĐẾN THƯ MỤC CHỨA DATA ẢNH
+path = "pics2"
 images = []
 Names = []
 myList = os.listdir(path)
@@ -22,6 +22,17 @@ def Encoding(images):
         encode.append(encoding)
     return encode
 encoded_img = Encoding(images)
+# GHI CHÚ LẠI THỜI GIAN NHẬN BIẾT KHUÔN MẶT THÀNH CÔNG
+def check_in(name):
+    with open('check_in.csv', 'r+') as f:
+        myDataList = f.readlines()
+        nameList = []
+        for line in myDataList:
+            entry = line.split(',')
+            nameList.append(entry[0])
+        if name not in nameList and name !='Unknown':
+            now = datetime.now()
+            f.writelines(f'\n{name},{now}')
 
 cam = cv2.VideoCapture(0) #KHỞI ĐỘNG CAMERA
 
@@ -40,6 +51,7 @@ while True:
 
         if faceDis[matchIndex] < 0.5:
             name = Names[matchIndex].upper()
+            check_in(name)
         else:
             name = "Unknown"
 
@@ -58,12 +70,13 @@ while True:
 cam.release()
 cv2.destroyAllWindows()
 
+
 # ĐĂNG KÝ KHUÔN MẶT NẾU NHƯ CHƯA NHẬN BIẾT ĐƯỢC
 if name == 'Unknown':
     decision = input('Type the password if you want to sign up (if not then skip this step): ')
     if decision == '25102007':
         face_detector = cv2.CascadeClassifier('Learning-Samples/haarcascade_frontalface_alt.xml')
-        name = input("name: ")
+        name_sign= input("name: ")
         while True:
             cam = cv2.VideoCapture(0)
             ret, frame = cam.read()
@@ -73,17 +86,7 @@ if name == 'Unknown':
             cv2.imshow('Face_Dectector', frame)
             if cv2.waitKey(1) == ord("q"):
                 break
-        cv2.imwrite('pics2/' + name + '.jpg', frame, (100, 100))
+        cv2.imwrite('pics2/' + name_sign + '.jpg', frame, (100, 100))
         cam.release()
         cv2.destroyAllWindows()
 
-# GHI CHÚ LẠI THỜI GIAN NHẬN BIẾT KHUÔN MẶT THÀNH CÔNG
-with open('check_in.csv', 'r+') as f:
-    myDataList = f.readlines()
-    nameList = []
-    for line in myDataList:
-        entry = line.split(',')
-        nameList.append(entry[0])
-    if name not in nameList and name !='Unknown':
-        now = datetime.now()
-        f.writelines(f'\n{name},{now}')
