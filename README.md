@@ -13,3 +13,5 @@ Chức năng|Người thực hiện|Ngày hoàn thành dự kiến
 -|-|-
 Đăng ký|Trương Khang|30/04/23
 Hoàn thành|Trương Khang|17/05/23
+
+## Link demo: https://www.youtube.com/watch?v=JSYkxgHoLFc
