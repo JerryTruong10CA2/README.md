@@ -12,4 +12,4 @@ Trương Khang|10CA2|uhbobo75@gmail.com
 Chức năng|Người thực hiện|Ngày hoàn thành dự kiến
 -|-|-
 Đăng ký|Trương Khang|30/04/23
-Hoàn thành|Trương Khang|18/05/23
+Hoàn thành|Trương Khang|19/05/23
