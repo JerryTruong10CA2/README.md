@@ -2,7 +2,9 @@ import cv2
 import os
 import face_recognition
 import numpy as np
+import pandas as pd
 from datetime import datetime
+
 
 # TẠO ĐƯỜNG DẪN ĐẾN DATASET CỦA ẢNH
 path = "pics2"
@@ -22,6 +24,7 @@ def Encoding(images):
         encode.append(encoding)
     return encode
 encoded_img = Encoding(images)
+
 # GHI CHÚ LẠI THỜI GIAN NHẬN BIẾT KHUÔN MẶT THÀNH CÔNG
 def check_in(name):
     with open('check_in.csv', 'r+') as f:
@@ -89,4 +92,8 @@ if name == 'Unknown':
         cv2.imwrite('pics2/' + name_sign + '.jpg', frame, (100, 100))
         cam.release()
         cv2.destroyAllWindows()
+
+# HIỂN THỊ DỮ LIỆU THỜI GIAN KHÁCH CHECK IN
+df = pd.read_csv('check_in.csv')
+print(df)
 
